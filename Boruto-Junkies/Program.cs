@@ -171,7 +171,13 @@ namespace Boruto_Junkies
             try
             {
                 string fileName = MakeValidFileName(video.VideoName);
-                
+
+                if (File.Exists(fileName + ".ts"))
+                {
+                    Console.WriteLine(fileName + " already downloaded, skipping.");
+                    return;
+                }
+
                 using (var outputStream = File.Create(fileName + ".ts"))
                 {
                     using (WebClient client = new WebClient())
