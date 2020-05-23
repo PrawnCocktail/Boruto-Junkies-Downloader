@@ -74,7 +74,7 @@ namespace Boruto_Junkies
         {
             var web = new HtmlWeb();
             var doc = web.Load(url);
-            return(doc.DocumentNode.SelectSingleNode("//div[@class='GTTabs_divs GTTabs_curr_div']//iframe").GetAttributeValue("src", null));
+            return(doc.DocumentNode.SelectSingleNode("//iframe").GetAttributeValue("src", null));
         }
 
         static PlayerParseReturn parsePlayer(string url)
