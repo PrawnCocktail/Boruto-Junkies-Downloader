@@ -56,15 +56,27 @@ namespace Boruto_Junkies
         //main series url
         static List<string> parseUrl(string url)
         {
+            Console.WriteLine("Fetching all URL's, this might take some time. ");
             List<string> tmpurls = new List<string>();
-            var web = new HtmlWeb();
-            var doc = web.Load(url);
-            var vhxembed = doc.DocumentNode.SelectNodes("//table[@class='ani-folgen']//tbody//tr[@class='mediaitem']//td[2]//a");
 
-            foreach (var item in vhxembed)
+            //add first url current page
+            tmpurls.Add(url);
+            var web = new HtmlWeb();
+
+            bool lastEpisode = false;   
+            while (lastEpisode == false)
             {
-                var vidurl = item.Attributes["href"].Value;
-                tmpurls.Add(vidurl);
+                var doc = web.Load(url);
+                var vhxembed = doc.DocumentNode.SelectSingleNode("//div[@class='simple-navigation']//div[@class='row']//div//a[@class='maincolor2hover']");
+                if (vhxembed != null)
+                {
+                    url = doc.DocumentNode.SelectSingleNode("//div[@class='simple-navigation']//div[@class='row']//div//a[@class='maincolor2hover']").Attributes["href"].Value;
+                    tmpurls.Add(url);
+                }
+                else
+                {
+                    lastEpisode = true;
+                }
             }
             return tmpurls;
         }
