@@ -1,5 +1,9 @@
 ## Boruto-Junkies Downloader
 
+**How to use**   
+Double click the exe and enter the url of the first episode you want to download, it will then download that episode and all subsequent episodes.   
+For instance, entering the url "https://boruto-junkies.com/naruto-shippuuden-folge-1/" will download episode 1, epsiode 2, episode 3 etc etc. 
+
 **What it does**  
 - Downloads videos from Boruto-Junkies.   
 - Downloads at the highest resolution available.   
